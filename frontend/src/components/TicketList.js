@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback, useRef } from "react";
 import { getTickets, patchTicket } from "../api";
 
 const STATUS_OPTIONS = [
@@ -11,12 +11,14 @@ const STATUS_OPTIONS = [
 export default function TicketList() {
   const [tickets, setTickets] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [searchInput, setSearchInput] = useState("");
   const [filters, setFilters] = useState({
     search: "",
     category: "",
     priority: "",
     status: "",
   });
+  const searchTimer = useRef(null);
 
   const load = useCallback(async () => {
     setLoading(true);
@@ -33,6 +35,15 @@ export default function TicketList() {
   useEffect(() => {
     load();
   }, [load]);
+
+  // Debounce search input so we don't fire on every keystroke
+  const handleSearchChange = (val) => {
+    setSearchInput(val);
+    if (searchTimer.current) clearTimeout(searchTimer.current);
+    searchTimer.current = setTimeout(() => {
+      setFilters((prev) => ({ ...prev, search: val }));
+    }, 400);
+  };
 
   const setFilter = (key, val) =>
     setFilters((prev) => ({ ...prev, [key]: val }));
@@ -65,8 +76,8 @@ export default function TicketList() {
         <input
           type="text"
           placeholder="Search tickets..."
-          value={filters.search}
-          onChange={(e) => setFilter("search", e.target.value)}
+          value={searchInput}
+          onChange={(e) => handleSearchChange(e.target.value)}
         />
         <select
           value={filters.category}
