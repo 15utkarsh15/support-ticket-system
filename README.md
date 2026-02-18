@@ -1,6 +1,7 @@
 # Support Ticket System
 
-A complete support ticket management platform that helps teams organize, track, and resolve customer issues efficiently. Built with Django, React, and PostgreSQL.
+A complete support ticket management platform that helps teams organize, track, and resolve customer issues efficiently. 
+Build with Django, React, and PostgreSQL.
 
 ## What It Does
 

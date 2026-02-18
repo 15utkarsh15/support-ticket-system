@@ -5,7 +5,7 @@ import StatsPanel from "./components/StatsPanel";
 import "./styles.css";
 
 export default function App() {
-  const [view, setView] = useState("list");
+  const [view, setView] = useState("list"); // "list" | "new" | "stats"
   const [tick, setTick] = useState(0);
 
   const refresh = useCallback(() => setTick((n) => n + 1), []);
