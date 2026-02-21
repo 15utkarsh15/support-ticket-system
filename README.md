@@ -1,3 +1,4 @@
+Demo link -  https://youtu.be/iUq-Gh4_NlA
 # Support Ticket System
 
 A complete support ticket management platform that helps teams organize, track, and resolve customer issues efficiently. 
@@ -21,7 +22,7 @@ This application allows you to:
 
 ```bash
 # 1. Clone the repository
-git clone <repository-url>
+git clone <https://github.com/15utkarsh15/support-ticket-system>
 cd support-ticket-system
 
 # 2. Set up environment variables (optional)
