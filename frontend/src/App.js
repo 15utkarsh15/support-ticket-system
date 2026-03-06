@@ -25,7 +25,7 @@ export default function App() {
             className={view === "new" ? "nav-link active" : "nav-link"}
             onClick={() => setView("new")}
           >
-            New Ticket
+            New Tickets
           </button>
           <button
             className={view === "stats" ? "nav-link active" : "nav-link"}
